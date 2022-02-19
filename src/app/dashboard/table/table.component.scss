@@ -1,0 +1,20 @@
+.underline {
+  border-bottom: 1px solid red;
+}
+
+.flex {
+  display: flex;
+  .f-right {
+    float: right;
+  }
+}
+
+@media screen and (max-width: 427px) {
+  .flex {
+    display: block;
+    .f-right {
+      float: none;
+    }
+  }
+}
+  

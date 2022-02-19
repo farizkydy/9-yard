@@ -1,0 +1,79 @@
+<div class="row mb-5">
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Top Profile Match</h4>
+        <div class="table-responsive">
+          <table class="table"> 
+            <tbody>
+              <tr *ngFor="let table of profileMatchData; let i = index">
+                <td>
+                  {{table.name}}
+                </td>
+                <td>
+                  {{table.profileMatch}}%
+                </td>
+                <td>
+                  <button class="btn-custom" (click)="changeShortlistStatus('shortlist', i)" *ngIf="!table.isShortlist">Shortlist</button>
+                  <button class="btn-custom" (click)="changeShortlistStatus('shortlisted', i)" *ngIf="table.isShortlist">Unshortlist</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Top Logical Score</h4>
+        <div class="table-responsive">
+          <table class="table"> 
+            <tbody>
+              <tr *ngFor="let table of logicalMatchData; let i = index">
+                <td>
+                  {{table.name}}
+                </td>
+                <td>
+                  {{table.logicalScore}}%
+                </td>
+                <td>
+                  <button class="btn-custom" (click)="changeShortlistStatus('shortlist', i)" *ngIf="!table.isShortlist">Shortlist</button>
+                  <button class="btn-custom" (click)="changeShortlistStatus('shortlisted', i)" *ngIf="table.isShortlist">Unshortlist</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Top Critical Score</h4>
+        <div class="table-responsive">
+          <table class="table"> 
+            <tbody>
+              <tr *ngFor="let table of criticalMatchData; let i = index">
+                <td>
+                  {{table.name}}
+                </td>
+                <td>
+                  {{table.criticalScore}}%
+                </td>
+                <td>
+                  <button class="btn-custom" (click)="changeShortlistStatus('shortlist', i)" *ngIf="!table.isShortlist">Shortlist</button>
+                  <button class="btn-custom" (click)="changeShortlistStatus('shortlisted', i)" *ngIf="table.isShortlist">Unshortlist</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

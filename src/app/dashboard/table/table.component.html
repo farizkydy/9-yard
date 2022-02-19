@@ -1,0 +1,172 @@
+<div class="row">
+  <div class="col-12 grid-margin">
+    <div class="card">
+      <div class="card-body">
+        <div class="flex">
+          <div class="col-md-5 col-sm-3 mb-5">
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="tab" [ngClass]="tabAll ? 'underline' : ''">
+                <span class="card-title mr-2" (click)="completedTab('All')">All</span>
+                <span class="length">{{tableData.length}}</span>
+              </div>
+              <span>|</span>
+              <div class="tab" [ngClass]="tabCompleted ? 'underline' : ''">
+                <span class="card-title mr-2" (click)="completedTab('Completed')">Completed</span>
+                <span class="length">{{completedLength}}</span>
+              </div>
+              <span>|</span>
+              <div class="tab" [ngClass]="tabShortlist ? 'underline' : ''">
+                <span class="card-title mr-2" (click)="completedTab('Shortlisted')">Shortlisted</span>
+                <span class="length">{{shortlistedLength}}</span>
+              </div>  
+              </div>
+          </div>
+          <div class="col-md-7">
+            <div class="form-group f-right">
+              <div class="input-group">
+                <div ngbDropdown class="input-group-prepend">
+                  <button ngbDropdownToggle class="btn btn-sm btn-outline-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shortlist</button>
+                  <div ngbDropdownMenu class="dropdown-menu">
+                    <a class="dropdown-item">Action</a>
+                    <a class="dropdown-item">Another action</a>
+                    <a class="dropdown-item">Something else here</a>
+                    <div role="separator" class="dropdown-divider"></div>
+                    <a class="dropdown-item">Separated link</a>
+                  </div>
+                </div>
+              </div>
+            </div> 
+          </div>
+        </div>
+        <div class="table-responsive" *ngIf="activeTab === 'All'">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>
+                  <input class="checkbox" type="checkbox">
+                </th>
+                <th *ngFor="let item of header" class="">
+                  
+                  <div class="sort d-flex" >
+                    {{item.name}}
+                    <i class="mdi mdi-arrow-down-drop-circle" aria-hidden="true" *ngIf="item.name !== 'Name'" (click)="sortData(item.name)"></i>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let table of actualData">
+                <td>
+                  <input class="checkbox" type="checkbox">
+                </td>
+                <td>
+                  {{table.name}}
+                </td>
+                <td>
+                  <label class="badge rounded-pill" [ngClass]="badgeColor(table.status)">{{table.status}}</label>
+                </td>
+                <td>
+                  {{table.profileMatch}}%
+                </td>
+                <td>
+                  {{table.logicalScore}}%
+                </td>
+                <td>
+                  {{table.criticalScore}}%
+                </td>
+                <td>
+                  {{table.skillsMatch}}%
+                </td>
+                
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="table-responsive" *ngIf="activeTab === 'Completed'">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>
+                  <input class="checkbox" type="checkbox">
+                </th>
+                <th *ngFor="let item of header">
+                  {{item.name}}
+                </th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let table of actualData">
+              <tr *ngIf="table.status === 'Completed'">
+                <td>
+                  <input class="checkbox" type="checkbox">
+                </td>
+                <td>
+                  {{table.name}}
+                </td>
+                <td>
+                  <label class="badge rounded-pill" [ngClass]="badgeColor(table.status)">{{table.status}}</label>
+                </td>
+                <td>
+                  {{table.profileMatch}}%
+                </td>
+                <td>
+                  {{table.logicalScore}}%
+                </td>
+                <td>
+                  {{table.criticalScore}}%
+                </td>
+                <td>
+                  {{table.skillsMatch}}%
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-responsive" *ngIf="activeTab === 'Shortlisted'">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>
+                  <input class="checkbox" type="checkbox">
+                </th>
+                <th *ngFor="let item of header">
+                  {{item.name}}
+                </th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let table of actualData">
+              <tr *ngIf="table.status === 'Shortlisted'">
+                <td>
+                  <input class="checkbox" type="checkbox">
+                </td>
+                <td>
+                  {{table.name}}
+                </td>
+                <td>
+                  <label class="badge rounded-pill" [ngClass]="badgeColor(table.status)">{{table.status}}</label>
+                </td>
+                <td>
+                  {{table.profileMatch}}%
+                </td>
+                <td>
+                  {{table.logicalScore}}%
+                </td>
+                <td>
+                  {{table.criticalScore}}%
+                </td>
+                <td>
+                  {{table.skillsMatch}}%
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="text-center">
+          <button class="btn btn-outline-primary btn-fw" (click)="expandRow('expand')" *ngIf="expand">Expand</button> 
+          <button class="btn btn-outline-primary btn-fw" (click)="expandRow('less')" *ngIf="!expand">Less</button> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
