@@ -5,18 +5,18 @@
         <div class="flex">
           <div class="col-md-5 col-sm-3 mb-5">
             <div class="d-flex align-items-center justify-content-between">
-              <div class="tab" [ngClass]="tabAll ? 'underline' : ''">
-                <span class="card-title mr-2" (click)="completedTab('All')">All</span>
+              <div class="tab">
+                <span class="card-title mr-2"  [ngClass]="tabAll ? 'underline' : ''" (click)="completedTab('All')">All</span>
                 <span class="length">{{tableData.length}}</span>
               </div>
               <span>|</span>
-              <div class="tab" [ngClass]="tabCompleted ? 'underline' : ''">
-                <span class="card-title mr-2" (click)="completedTab('Completed')">Completed</span>
+              <div class="tab" >
+                <span class="card-title mr-2" [ngClass]="tabCompleted ? 'underline' : ''" (click)="completedTab('Completed')">Completed</span>
                 <span class="length">{{completedLength}}</span>
               </div>
               <span>|</span>
-              <div class="tab" [ngClass]="tabShortlist ? 'underline' : ''">
-                <span class="card-title mr-2" (click)="completedTab('Shortlisted')">Shortlisted</span>
+              <div class="tab" >
+                <span class="card-title mr-2" [ngClass]="tabShortlist ? 'underline' : ''" (click)="completedTab('Shortlisted')">Shortlisted</span>
                 <span class="length">{{shortlistedLength}}</span>
               </div>  
               </div>
